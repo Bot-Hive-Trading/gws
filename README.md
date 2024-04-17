@@ -13,6 +13,8 @@
 
 </div>
 
+**Note, this is the fork of the https://github.com/lxzan/gws** 
+
 ### Introduction
 
 GWS (Go WebSocket) is a very simple, fast, reliable and feature-rich WebSocket implementation written in Go. It is
