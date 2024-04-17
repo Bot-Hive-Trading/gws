@@ -3,8 +3,7 @@ package gws
 import (
 	"testing"
 
-	"github.com/dolthub/maphash"
-	"github.com/lxzan/gws/internal"
+	"github.com/Bot-Hive-Trading/gws/internal"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -163,7 +162,7 @@ func TestConcurrentMap_Range(t *testing.T) {
 }
 
 func TestHash(t *testing.T) {
-	var h = maphash.NewHasher[string]()
+	var h = internal.NewHasher[string]()
 	for i := 0; i < 1000; i++ {
 		var a = string(internal.AlphabetNumeric.Generate(16))
 		var b = string(internal.AlphabetNumeric.Generate(16))

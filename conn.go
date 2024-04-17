@@ -5,7 +5,7 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/binary"
-	"github.com/lxzan/gws/internal"
+	"github.com/Bot-Hive-Trading/gws/internal"
 	"net"
 	"sync"
 	"sync/atomic"

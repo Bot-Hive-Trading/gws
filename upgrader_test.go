@@ -17,7 +17,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/lxzan/gws/internal"
+	"github.com/Bot-Hive-Trading/gws/internal"
 	"github.com/stretchr/testify/assert"
 )
 

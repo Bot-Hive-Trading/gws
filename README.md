@@ -9,7 +9,7 @@
 
 <div align="center">
 
-[![awesome](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/avelino/awesome-go#networking) [![codecov](https://codecov.io/gh/lxzan/gws/graph/badge.svg?token=DJU7YXWN05)](https://codecov.io/gh/lxzan/gws) [![go-test](https://github.com/lxzan/gws/workflows/Go%20Test/badge.svg?branch=master)](https://github.com/lxzan/gws/actions?query=branch%3Amaster) [![go-reportcard](https://goreportcard.com/badge/github.com/lxzan/gws)](https://goreportcard.com/report/github.com/lxzan/gws) [![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE) [![go-version](https://img.shields.io/badge/go-%3E%3D1.18-30dff3?style=flat-square&logo=go)](https://github.com/lxzan/gws)
+[![awesome](https://awesome.re/mentioned-badge-flat.svg)](https://github.com/avelino/awesome-go#networking) [![codecov](https://codecov.io/gh/lxzan/gws/graph/badge.svg?token=DJU7YXWN05)](https://codecov.io/gh/lxzan/gws) [![go-test](https://github.com/Bot-Hive-Trading/gws/workflows/Go%20Test/badge.svg?branch=master)](https://github.com/Bot-Hive-Trading/gws/actions?query=branch%3Amaster) [![go-reportcard](https://goreportcard.com/badge/github.com/Bot-Hive-Trading/gws)](https://goreportcard.com/report/github.com/Bot-Hive-Trading/gws) [![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE) [![go-version](https://img.shields.io/badge/go-%3E%3D1.18-30dff3?style=flat-square&logo=go)](https://github.com/Bot-Hive-Trading/gws)
 
 </div>
 
@@ -57,7 +57,7 @@ GOMAXPROCS=4, Connection=1000, CompressEnabled=false
 ```go
 goos: linux
 goarch: amd64
-pkg: github.com/lxzan/gws
+pkg: github.com/Bot-Hive-Trading/gws
 cpu: AMD Ryzen 5 PRO 4650G with Radeon Graphics
 BenchmarkConn_WriteMessage/compress_disabled-8         	 7252513	     165.4 ns/op	       0 B/op	       0 allocs/op
 BenchmarkConn_WriteMessage/compress_enabled-8          	   97394	     10391 ns/op	     349 B/op	       0 allocs/op
@@ -108,7 +108,7 @@ PASS
 ### Install
 
 ```bash
-go get -v github.com/lxzan/gws@latest
+go get -v github.com/Bot-Hive-Trading/gws@latest
 ```
 
 ### Event
@@ -128,7 +128,7 @@ type Event interface {
 ```go
 package main
 
-import "github.com/lxzan/gws"
+import "github.com/Bot-Hive-Trading/gws"
 
 func main() {
 	gws.NewServer(&gws.BuiltinEventHandler{}, nil).Run(":6666")
@@ -141,7 +141,7 @@ func main() {
 package main
 
 import (
-	"github.com/lxzan/gws"
+	"github.com/Bot-Hive-Trading/gws"
 	"net/http"
 	"time"
 )
@@ -202,7 +202,7 @@ package main
 
 import (
 	"log"
-	"github.com/lxzan/gws"
+	"github.com/Bot-Hive-Trading/gws"
 	kcp "github.com/xtaci/kcp-go"
 )
 
@@ -223,7 +223,7 @@ func main() {
 package main
 
 import (
-	"github.com/lxzan/gws"
+	"github.com/Bot-Hive-Trading/gws"
 	kcp "github.com/xtaci/kcp-go"
 	"log"
 )
@@ -253,7 +253,7 @@ package main
 
 import (
 	"crypto/tls"
-	"github.com/lxzan/gws"
+	"github.com/Bot-Hive-Trading/gws"
 	"golang.org/x/net/proxy"
 	"log"
 )
@@ -330,7 +330,7 @@ package main
 
 import (
 	"github.com/lxzan/event_emitter"
-	"github.com/lxzan/gws"
+	"github.com/Bot-Hive-Trading/gws"
 )
 
 type Socket struct{ *gws.Conn }

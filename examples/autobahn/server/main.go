@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/lxzan/gws"
+	"github.com/Bot-Hive-Trading/gws"
 )
 
 func main() {

@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/lxzan/gws/internal"
+	"github.com/Bot-Hive-Trading/gws/internal"
 )
 
 type Dialer interface {

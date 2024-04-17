@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/lxzan/gws/internal"
+	"github.com/Bot-Hive-Trading/gws/internal"
 )
 
 func (c *Conn) checkMask(enabled bool) error {

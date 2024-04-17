@@ -3,8 +3,7 @@ package gws
 import (
 	"sync"
 
-	"github.com/dolthub/maphash"
-	"github.com/lxzan/gws/internal"
+	"github.com/Bot-Hive-Trading/gws/internal"
 )
 
 type SessionStorage interface {
@@ -60,7 +59,7 @@ func (c *smap) Range(f func(key string, value any) bool) {
 
 type (
 	ConcurrentMap[K comparable, V any] struct {
-		hasher   maphash.Hasher[K]
+		hasher   internal.Hasher[K]
 		sharding uint64
 		buckets  []*bucket[K, V]
 	}
@@ -75,7 +74,7 @@ func NewConcurrentMap[K comparable, V any](sharding uint64) *ConcurrentMap[K, V]
 	sharding = internal.SelectValue(sharding == 0, 16, sharding)
 	sharding = internal.ToBinaryNumber(sharding)
 	var cm = &ConcurrentMap[K, V]{
-		hasher:   maphash.NewHasher[K](),
+		hasher:   internal.NewHasher[K](),
 		sharding: sharding,
 		buckets:  make([]*bucket[K, V], sharding),
 	}

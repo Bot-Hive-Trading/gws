@@ -1,11 +1,10 @@
-module github.com/lxzan/gws
+module github.com/Bot-Hive-Trading/gws
 
 go 1.18
 
 require (
-	github.com/dolthub/maphash v0.1.0
-	github.com/klauspost/compress v1.17.5
-	github.com/stretchr/testify v1.8.4
+	github.com/klauspost/compress v1.17.8
+	github.com/stretchr/testify v1.9.0
 )
 
 require (

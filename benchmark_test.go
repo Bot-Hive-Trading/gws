@@ -10,8 +10,8 @@ import (
 	"net"
 	"testing"
 
+	"github.com/Bot-Hive-Trading/gws/internal"
 	klauspost "github.com/klauspost/compress/flate"
-	"github.com/lxzan/gws/internal"
 )
 
 //go:embed assets/github.json

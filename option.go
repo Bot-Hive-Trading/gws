@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/Bot-Hive-Trading/gws/internal"
 	"github.com/klauspost/compress/flate"
-	"github.com/lxzan/gws/internal"
 )
 
 const (

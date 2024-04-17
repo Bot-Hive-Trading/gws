@@ -10,8 +10,8 @@ import (
 	"sync"
 	"sync/atomic"
 
+	"github.com/Bot-Hive-Trading/gws/internal"
 	"github.com/klauspost/compress/flate"
-	"github.com/lxzan/gws/internal"
 )
 
 // FlateTail Add four bytes as specified in RFC

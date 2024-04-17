@@ -5,7 +5,7 @@ import (
 	"log"
 	"path/filepath"
 
-	"github.com/lxzan/gws"
+	"github.com/Bot-Hive-Trading/gws"
 )
 
 var dir string
