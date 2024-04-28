@@ -5,11 +5,12 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/binary"
-	"github.com/Bot-Hive-Trading/gws/internal"
 	"net"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/Bot-Hive-Trading/gws/internal"
 )
 
 type Conn struct {
@@ -64,6 +65,9 @@ func (c *Conn) ReadLoop() {
 	}
 }
 
+// return if connection has been closed for
+func (c *Conn) IsClosed() bool { return atomic.LoadUint32(&c.closed) == 1 }
+
 func (c *Conn) getCpsDict(isBroadcast bool) []byte {
 	// 广播模式必须保证每一帧都是相同的内容, 所以不使用上下文接管优化压缩率
 	if isBroadcast {
@@ -94,8 +98,6 @@ func (c *Conn) isTextValid(opcode Opcode, payload []byte) bool {
 	}
 	return true
 }
-
-func (c *Conn) isClosed() bool { return atomic.LoadUint32(&c.closed) == 1 }
 
 func (c *Conn) close(reason []byte, err error) {
 	c.err.Store(err)
