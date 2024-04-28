@@ -119,6 +119,21 @@ func (c *Upgrader) getPermessageDeflate(extensions string) PermessageDeflate {
 	}
 }
 
+// upgrade with custom event handler passed
+func (c *Upgrader) UpgradeWithEventHandler(w http.ResponseWriter, r *http.Request, eventHandler Event) (*Conn, error) {
+	netConn, br, err := c.hijack(w)
+	if err != nil {
+		return nil, err
+	}
+
+	socket, err := c.doUpgradeFromConn(netConn, br, r, eventHandler)
+	if err != nil {
+		_ = c.writeErr(netConn, err)
+		_ = netConn.Close()
+	}
+	return socket, err
+}
+
 // Upgrade
 // 升级HTTP到WebSocket协议
 // http upgrade to websocket protocol
@@ -133,7 +148,7 @@ func (c *Upgrader) Upgrade(w http.ResponseWriter, r *http.Request) (*Conn, error
 // UpgradeFromConn 从连接(TCP/KCP/Unix Domain Socket...)升级到WebSocket协议
 // From connection (TCP/KCP/Unix Domain Socket...) Upgrade to WebSocket protocol
 func (c *Upgrader) UpgradeFromConn(conn net.Conn, br *bufio.Reader, r *http.Request) (*Conn, error) {
-	socket, err := c.doUpgradeFromConn(conn, br, r)
+	socket, err := c.doUpgradeFromConn(conn, br, r, c.eventHandler)
 	if err != nil {
 		_ = c.writeErr(conn, err)
 		_ = conn.Close()
@@ -155,7 +170,7 @@ func (c *Upgrader) writeErr(conn net.Conn, err error) error {
 	return result
 }
 
-func (c *Upgrader) doUpgradeFromConn(netConn net.Conn, br *bufio.Reader, r *http.Request) (*Conn, error) {
+func (c *Upgrader) doUpgradeFromConn(netConn net.Conn, br *bufio.Reader, r *http.Request, eventHandler Event) (*Conn, error) {
 	var session = c.option.NewSession()
 	if !c.option.Authorize(r, session) {
 		return nil, ErrUnauthorized
@@ -205,7 +220,7 @@ func (c *Upgrader) doUpgradeFromConn(netConn net.Conn, br *bufio.Reader, r *http
 		br:                br,
 		continuationFrame: continuationFrame{},
 		fh:                frameHeader{},
-		handler:           c.eventHandler,
+		handler:           eventHandler,
 		closed:            0,
 		writeQueue:        workerQueue{maxConcurrency: 1},
 		readQueue:         make(channel, c.option.ParallelGolimit),
